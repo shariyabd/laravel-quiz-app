@@ -43,9 +43,6 @@
                             <span class="nk-menu-text">Quiz Topic</span>
                         </a>
                         <ul class="nk-menu-sub">
-                            {{-- <li class="nk-menu-item">
-                                <a href="{{route('dashboard.quiz.topic')}}" class="nk-menu-link"><span class="nk-menu-text">Add Topic</span></a>
-                            </li> --}}
                             <li class="nk-menu-item">
                                 <a href="{{route('dashboard.quiz.topic')}}" class="nk-menu-link"><span class="nk-menu-text">Manage Topic</span></a>
                             </li>
@@ -57,9 +54,6 @@
                             <span class="nk-menu-text">Quiz</span>
                         </a>
                         <ul class="nk-menu-sub">
-                            {{-- <li class="nk-menu-item">
-                                <a href="{{route('dashboard.quiz')}}" class="nk-menu-link"><span class="nk-menu-text">Add Quiz</span></a>
-                            </li> --}}
                             <li class="nk-menu-item">
                                 <a href="{{route('dashboard.quiz')}}" class="nk-menu-link"><span class="nk-menu-text">Manage Quiz</span></a>
                             </li>
@@ -72,11 +66,8 @@
                             <span class="nk-menu-text">Quiz Question Paper </span>
                         </a>
                         <ul class="nk-menu-sub">
-                            {{-- <li class="nk-menu-item">
-                                <a href="{{route('dashboard.quiz.question')}}" class="nk-menu-link"><span class="nk-menu-text">Add Quiz Qustion</span></a>
-                            </li> --}}
                             <li class="nk-menu-item">
-                                <a href="{{route('dashboard.quiz.manage.question')}}" class="nk-menu-link"><span class="nk-menu-text">Manage Quiz Qustion</span></a>
+                                <a href="{{route('dashboard.quiz.question')}}" class="nk-menu-link"><span class="nk-menu-text">Manage Qustion Papers</span></a>
                             </li>
                         </ul><!-- .nk-menu-sub -->
                     </li>

@@ -79,7 +79,8 @@ Route::middleware('admin')->group(function () {
         Route::post('/dashboard/quiz/delete', [QuizController::class, 'quizDelete'])->name('dashboard.quizDelete');
 
 
-        Route::get('/dashboard/manage-quiz-question', [QuizQuestionController::class, 'manageQuizQuestion'])->name('dashboard.quiz.manage.question');
+        Route::get('/dashboard/quiz-question', [QuizQuestionController::class, 'QuizQuestionIndex'])->name('dashboard.quiz.question');
+        Route::post('/dashboard/quiz-question-store', [QuizQuestionController::class, 'QuizQuestionStore'])->name('dashboard.quizQuestionStore');
     });
 });
 

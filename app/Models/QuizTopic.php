@@ -10,4 +10,8 @@ class QuizTopic extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    public function quiz(){
+        return $this->hasOne(Quiz::class);
+    }
 }

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('subtitle');
             $table->string('duration');
             $table->string('full_marks');
-            $table->string('quiz_id[json]');
-            $table->string('deleted_at'); // Stores the selected option (e.g., option_1)
+            $table->string('quiz_id');
+            $table->string('deleted_at'); 
             $table->timestamps();
         });
     }

@@ -33,7 +33,6 @@
           </div> --}}
         <!-- main @e -->
     </div>
-  @include('backend.pages.quiz-topic.addEditForm');
-  @include('backend.pages.quiz-question.addEditForm');
+
   {{-- @include('backend.pages.quiz.addEdit'); --}}
 @include('backend.includes.script');

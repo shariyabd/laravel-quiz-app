@@ -19,5 +19,9 @@ class Quiz extends Model
         'correct_answer',
         'quiz_topic_id'
     ];
+
+    public function quizTopic(){
+        return $this->belongsTo(QuizTopic::class);
+    }
     
 }
