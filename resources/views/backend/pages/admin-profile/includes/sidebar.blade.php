@@ -27,7 +27,7 @@
                 <li><a href="{{route('dashboard.adminProfile.updateForm')}}"><em class="icon ni ni-grid-add-fill-c"></em><span>Update Profile</span></a></li>
                 <li><a href="html/user-profile-notification.html"><em class="icon ni ni-bell-fill"></em><span>Notifications</span></a></li>
                 <li><a href="html/user-profile-activity.html"><em class="icon ni ni-activity-round-fill"></em><span>Account Activity</span></a></li>
-                <li><a href="html/user-profile-setting.html"><em class="icon ni ni-lock-alt-fill"></em><span>Security Settings</span></a></li>
+                <li><a href="{{route('dashboard.adminPassword.updateForm')}}"><em class="icon ni ni-lock-alt-fill"></em><span>Password Settings</span></a></li>
             </ul>
         </div><!-- .card-inner -->
     </div><!-- .card-inner-group -->

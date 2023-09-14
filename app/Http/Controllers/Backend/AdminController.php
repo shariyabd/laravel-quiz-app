@@ -21,4 +21,8 @@ class AdminController extends Controller
         return view('backend.pages.admin-profile.update-admin-profile');
     }
 
+    public function adminPasswordUpdateForm(){
+        return view('backend.pages.admin-profile.admin-password-update');
+    }
+
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\QuizController;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Frontend\UserAuthController;
 use App\Http\Controllers\Backend\AdminAuthController;
+use App\Http\Controllers\Backend\AdminPasswordUpdateController;
 use App\Http\Controllers\Backend\QuizTopicController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Backend\QuizQuestionController;
@@ -96,6 +97,11 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/dashboard/profile/update', [AdminController::class, 'adminProfileUpdateForm'])->name('dashboard.adminProfile.updateForm');
     Route::post('/dashboard/profile/update', [AdminProfileUpdateController::class, 'adminProfileUpdate'])->name('dashboard.adminProfile.update');
+
+
+    Route::get('/dashboard/password/update', [AdminController::class, 'adminPasswordUpdateForm'])->name('dashboard.adminPassword.updateForm');
+    Route::post('/dashboard/password/update', [AdminPasswordUpdateController::class, 'adminPasswordUpdate'])->name('dashboard.adminPassword.update');
+    
 });
 
 // Route::get('/dashboard/forgot-password', [AdminPasswordResetController::class, 'resetForm'])->name('admin.password.request');
