@@ -45,7 +45,7 @@ class AdminPasswordUpdateController extends Controller
         $admin = Admin::find($auth->id);
         $admin->password =  Hash::make($request->new_password);
         $admin->save();
-        Session::flash('cls');
+        Session::flash('cls', 'success');
         return back()->with('success', "Password Changed Successfully");
     }
 }

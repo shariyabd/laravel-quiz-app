@@ -41,16 +41,16 @@ class QuizTopicController extends Controller
     public function QuizTopicstore(Request $request)
     {
         $request->validate([
-            'name'=>'required|unique:quiz_topics'
+            'name' => 'required|unique:quiz_topics'
         ]);
+
         QuizTopic::updateOrCreate([
             'id' => $request->id
         ],
         [
-            'name' => $request->name, 
-            
-        ]);             
-        
+            'name' => $request->name,  
+        ]);       
+
 
         return response()->json(['success' => 'Quiz saved successfully.']);
     }

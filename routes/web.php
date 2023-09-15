@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\QuizController;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Frontend\UserAuthController;
 use App\Http\Controllers\Backend\AdminAuthController;
+use App\Http\Controllers\Backend\AdminPasswordResetController;
 use App\Http\Controllers\Backend\AdminPasswordUpdateController;
 use App\Http\Controllers\Backend\QuizTopicController;
 use App\Http\Controllers\Frontend\FrontendController;
@@ -82,6 +83,8 @@ Route::middleware('admin')->group(function () {
 
         Route::get('/dashboard/quiz-question', [QuizQuestionController::class, 'QuizQuestionIndex'])->name('dashboard.quiz.question');
         Route::post('/dashboard/quiz-question-store', [QuizQuestionController::class, 'QuizQuestionStore'])->name('dashboard.quizQuestionStore');
+        Route::get('/dashboard/quiz-question-edit{id?}', [QuizQuestionController::class, 'QuizQuestionEdit'])->name('dashboard.quizQuestionEdit');
+        Route::post('/dashboard/quiz-question-delete', [QuizQuestionController::class, 'QuizQuestionDelete'])->name('dashboard.quizQuestionDelete');
     });
 });
 
@@ -102,9 +105,15 @@ Route::prefix('admin')->group(function () {
     Route::get('/dashboard/password/update', [AdminController::class, 'adminPasswordUpdateForm'])->name('dashboard.adminPassword.updateForm');
     Route::post('/dashboard/password/update', [AdminPasswordUpdateController::class, 'adminPasswordUpdate'])->name('dashboard.adminPassword.update');
     
+    Route::get('/dashboard/forgot-password', [AdminPasswordResetController::class, 'showForgetPasswordForm'])->name('admin.password.get');
+    Route::post('/dashboard/forgot-password', [AdminPasswordResetController::class, 'submitForgetPasswordForm'])->name('admin.password.post');
+    Route::get('/dashboard/reset-password/{token}', [AdminPasswordResetController::class, 'showResetPasswordForm'])->name('admin.password.reset.get');
+    Route::post('/dashboard/reset-password', [AdminPasswordResetController::class, 'submitResetPasswordForm'])->name('admin.reset.password.update');
 });
 
-// Route::get('/dashboard/forgot-password', [AdminPasswordResetController::class, 'resetForm'])->name('admin.password.request');
-// Route::post('/dashboard/forgot-password', [AdminPasswordResetController::class, 'adminSendLink'])->name('admin.password.email');
-// Route::get('/dashboard/reset-password/{token}', [AdminPasswordResetController::class, 'adminResetPassword'])->name('admin.password.reset');
-// Route::post('/dashboard/reset-password', [AdminPasswordResetController::class, 'adminPasswordUpdate'])->name('admin.password.update');
+
+
+// Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+// Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
+// Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+// Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');

@@ -31,7 +31,7 @@ class AdminAuthController extends Controller
             return redirect(route('admin.dashboard'))->with('success', 'Great! You have successfully logged in.');
         } else {
             // Failed login
-            return redirect()->back()->withErrors(['email' => 'These credentials do not match our records.']);
+            return redirect()->back()->withErrors(['email' => 'These Email or Password do not match our records.']);
         }
         }
 

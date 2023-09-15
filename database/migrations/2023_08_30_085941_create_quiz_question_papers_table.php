@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('subtitle');
             $table->string('duration');
             $table->string('full_marks');
-            $table->string('quiz_id');
-            $table->string('deleted_at'); 
+            $table->json('quiz_id')->nullable();
+            $table->string('deleted_at')->nullable(); 
             $table->timestamps();
         });
     }

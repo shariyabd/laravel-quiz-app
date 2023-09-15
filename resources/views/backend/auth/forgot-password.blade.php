@@ -1,4 +1,4 @@
-{{-- @extends('backend.auth.layouts.master')
+@extends('backend.auth.layouts.master')
 @section('main-content')
     <div class="nk-content ">
         <div class="nk-block nk-block-middle nk-auth-body  wide-xs">
@@ -21,11 +21,20 @@
                             </div>
                         </div>
                     </div>
-                    <form action="{{ route('admin.password.email') }}" method="POST">
+                    @if ($errors->has('email'))
+                        <div class="alert alert-danger">
+                            {{ $errors->first('email') }}
+                        </div>
+                    @endif
+
+                    <form action="{{route('admin.password.post')}}" method="POST">
                         @csrf
-                        @if (session('status'))
-                            <p class="bg-success-500 text-primary p-3 w-full text-center">{{ session('status') }}</p>
+                        @if (session('message'))
+                            <div class="alert alert-success">
+                                {{ session('message') }}
+                            </div>
                         @endif
+
                         <div class="form-group">
                             <div class="form-label-group">
                                 <label class="form-label" for="default-01">Email</label>
@@ -40,7 +49,7 @@
                         </div>
                     </form>
                     <div class="form-note-s2 text-center pt-4">
-                        <a href="{{ route('admin.login.show') }}"><strong>Return to login</strong></a>
+                        <a href=""><strong>Return to login</strong></a>
                     </div>
                 </div>
             </div>
@@ -102,4 +111,4 @@
             </div>
         </div>
     </div>
-@endsection --}}
+@endsection
