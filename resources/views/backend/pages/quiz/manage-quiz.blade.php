@@ -16,7 +16,7 @@
                                     <table id="" class="  table data-table">
                                         <thead>
                                             <th>Id</th>
-                                            <th>Quiz Topic Id</th>
+                                            <th>Quiz Topic</th>
                                             <th>Title </th>
                                             <th>Option One</th>
                                             <th>Option Two</th>

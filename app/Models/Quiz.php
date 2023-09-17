@@ -21,7 +21,12 @@ class Quiz extends Model
     ];
 
     public function quizTopic(){
-        return $this->belongsTo(QuizTopic::class);
+        return $this->belongsTo(QuizTopic::class, 'quiz_topic_id');
     }
+
+    public function quizQuestion(){
+        return $this->hasOne(QuizQuestionPaper::class);
+    }
+    
     
 }

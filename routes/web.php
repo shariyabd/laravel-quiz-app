@@ -83,7 +83,7 @@ Route::middleware('admin')->group(function () {
 
         Route::get('/dashboard/quiz-question', [QuizQuestionController::class, 'QuizQuestionIndex'])->name('dashboard.quiz.question');
         Route::post('/dashboard/quiz-question-store', [QuizQuestionController::class, 'QuizQuestionStore'])->name('dashboard.quizQuestionStore');
-        Route::get('/dashboard/quiz-question-edit{id?}', [QuizQuestionController::class, 'QuizQuestionEdit'])->name('dashboard.quizQuestionEdit');
+        Route::get('/dashboard/quiz-question-edit/{id?}', [QuizQuestionController::class, 'QuizQuestionEdit'])->name('dashboard.quizQuestionEdit');
         Route::post('/dashboard/quiz-question-delete', [QuizQuestionController::class, 'QuizQuestionDelete'])->name('dashboard.quizQuestionDelete');
     });
 });

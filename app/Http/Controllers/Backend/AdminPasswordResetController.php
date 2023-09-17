@@ -85,7 +85,7 @@ class AdminPasswordResetController extends Controller
         // Find the admin user by email
         $admin = Admin::where('email', $request->email)->first();
 
-        dd($admin);
+      
 
         if ($admin) {
             // Update the admin's password

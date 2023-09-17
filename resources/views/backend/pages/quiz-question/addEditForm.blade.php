@@ -23,15 +23,22 @@
                         placeholder="Quiz SubTitle Name :">
 
                     <label for="duration">Quiz Duration</label>
-                    <input type="text" name="duration" id="duration" class="form-control mb-3"
-                        placeholder="Quiz Duration :">
+                    <select name="duration" id="duration" class="form-control mb-3 ">
+                        <option value="#">Select Quiz Duration</option>
+                        <option value="5">5 Minutes</option>
+                        <option value="10">10 Minutes</option>
+                        <option value="20">20 Minutes</option>
+                        <option value="30">30 Minutes</option>
+                        <option value="40">40 Minutes</option>
+                    </select>
 
                     <label for="full_marks">Quiz Full Marks :</label>
-                    <input type="text" name="full_marks" id="full_marks" class="form-control mb-3"
+                    <input type="number" name="full_marks" id="full_marks" class="form-control mb-3"
                         placeholder="Quiz Full Marks :">
 
-                    <select name="quiz_id[]" id="quizSelect" class="form-control mb-3">
-                        <option value="#">---Select Quiz Id------</option>
+                        <label for="quizSelect">----Select Quiz---- </label>
+                    <select name="quiz_id[]" id="quizSelect" multiple class="form-control select2-multiple mb-3">
+                        {{-- <option value="#">---Select Quiz Id------</option> --}}
                         @foreach ($quiz as $item)
                             <option value="{{ $item->id }}">{{ $item->id }}</option>
                         @endforeach

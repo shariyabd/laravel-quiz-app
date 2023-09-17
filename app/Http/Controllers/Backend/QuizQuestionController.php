@@ -18,11 +18,17 @@ class QuizQuestionController extends Controller
     public function QuizQuestionIndex(Request $request){
 
         $quiz = Quiz::all();
+        $quizCount = Quiz::count();
+       
+    
 
         if ($request->ajax()) {
             $data = QuizQuestionPaper::all();
             return Datatables::of($data)
                 ->addIndexColumn()
+                ->addColumn('quiz_id', function ($row) use ($quizCount) {
+                    return $quizCount;
+                })
                 ->addColumn('action', function ($row) {
                     $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-md  questionPaperEdit-btn"><i class="fa-solid fa-pen-to-square"></i></a>';
                     $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-danger btn-md questionPaperDelete-btn"><i class="fa-solid fa-trash "></i></a>';
@@ -56,19 +62,22 @@ class QuizQuestionController extends Controller
                 ]
                 );
         
-        return response()->json(['success', 'Question Paper Added Successfully']);
+        return response()->json(['message' => 'Question Paper Saved Successfully']);
     }
 
     public function QuizQuestionEdit($id){
         $quizQuestion = QuizQuestionPaper::findOrFail($id);
 
+       
         return response()->json($quizQuestion);
     }
+   
+   
 
     public function QuizQuestionDelete(Request $request){
         $quizQuestionId = QuizQuestionPaper::findOrFail($request->id)->delete();
         
-        return response()->json(['success', 'Question Paper Deleted Successfully']);
+        return response()->json(['message' => 'Question Paper Deleted Successfully']);
 
     }
 }

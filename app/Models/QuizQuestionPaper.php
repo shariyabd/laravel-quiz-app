@@ -12,4 +12,13 @@ class QuizQuestionPaper extends Model
     // protected $guarded = [];
     protected $fillable = ['title','subtitle','duration', 'full_marks', 'quiz_id'];
 
+    public function quizes(){
+        return $this->belongsTo(QuizQuestionPaper::class,'quiz_id');
+    }
+
+    // protected $casts = [
+    //     'quiz_id' => 'json',
+    //  ];
 }
+
+

@@ -1,0 +1,4 @@
+.select2-search__field,
+.select2-search.select2-search--inline {
+    width: 100%!important;
+}

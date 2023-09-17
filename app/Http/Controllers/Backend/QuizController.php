@@ -15,14 +15,51 @@ class QuizController extends Controller
     public function Quizindex(Request $request)
     {
 
-    //   dd(Quiz::all());
         $quizTopics = QuizTopic::all();
 
 
+
+//         $quizTopics = Quiz::with('quizTopic')->get();
+// $quizTopicNames = [];
+
+// foreach ($quizTopics as $quiz) {
+//     $quizTopicNames[] = $quiz->quizTopic->name;
+// }
+
+// dd($quizTopicNames);
+
+        // $quizTopics = Quiz::with('quizTopic')->get();
+
+        //     $quizTopicNames = $quizTopics->map(function ($quiz) {
+        //         return $quiz->quizTopic->name;
+        //     });
+
+        //     dd($quizTopicNames);
+
+
+        // $quizTopics = Quiz::with('quizTopic')->get();
+
+        
+        // $firstQuizTopicName = $quizTopics[2]->quizTopic->name;
+        
+        // dd($firstQuizTopicName);
+    
+    
+
+ 
+        //dd($quizTopics);
+
+
         if($request->ajax()){
-            $data =Quiz::all();
+            $data =Quiz::with('quizTopic')->get();
             return Datatables::of($data)
                 ->addIndexColumn()
+                ->addColumn('quiz_topic_id', function ($row) {
+                    return $row->quizTopic ? $row->quizTopic['name'] : 'Unknown';
+                })
+                ->addColumn('title', function ($row) {
+                    return resizeString($row->title, 0, 10);
+                })
                 ->addColumn('action', function ($row) {
                     $btn = '<div class="d-flex">';
                     $btn .= '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-md quizEdit-btn"><i class="fa-solid fa-pen-to-square"></i></a>';

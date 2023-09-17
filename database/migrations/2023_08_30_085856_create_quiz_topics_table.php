@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('quiz_topics', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('deleted_at')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -20,6 +20,7 @@
     <title>Sales Dashboard | DashLite Admin Template</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="{{asset('backend/css/preloader.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/css/custom.css')}}">
     <link rel="stylesheet" href="{{ asset('backend/css/dashlite.css?ver=2.8.0') }}">
     <link id="skin-default" rel="stylesheet" href="{{ asset('backend/css/theme.css?ver=2.8.0') }}">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />

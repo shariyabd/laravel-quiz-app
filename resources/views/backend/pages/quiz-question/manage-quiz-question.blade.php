@@ -23,7 +23,7 @@
                                             <th>Sub Title </th>
                                             <th>Duration</th>
                                             <th>Marks</th>
-                                            <th>Quiz Id</th>
+                                            <th>Total Quiz</th>
                                             <th>Action</th>
                                         </thead>
                                         <tbody>
@@ -94,22 +94,11 @@
                         },
                     ]
                 });
-            });
-
-
-
-            $(document).ready(function() {
-
-
-                $('#quizSelect').select2({
-                    placeholder: 'Select an option',
-                    multiple: true
-                });
 
                 $('#addQuestionPaper').click(function() {
                     $('#id').val('');
                     $('#QuestionPaperForm').trigger("reset");
-                    $('#modal-heading').html("Create Quiz Question Paper");
+                    $('.modal-title').html("Create Quiz Question Paper");
                     $('#quizQuestionPaperModal').modal('show');
                 });
 
@@ -119,7 +108,7 @@
                     e.preventDefault();
                     $('.message').empty();
 
-                    console.log("Button clicked");
+                    $('.create_question_paper').html("Create Question Paper");
 
                     $.ajax({
                         type: "POST",
@@ -127,11 +116,19 @@
                         data: $('#QuestionPaperForm').serialize(),
                         dataType: 'json',
                         success: function(response) {
+
                             console.log(response);
                             console.log("Ajax request success");
 
-                            if (response && response.success) {
-                                alert('Success');
+                            if (response && response.message != undefined) {
+                                Swal.fire({
+                                            position: 'top-end',
+                                            icon: 'success',
+                                            toast: true,
+                                            title: response.message,
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        });
                                 $('#QuestionPaperForm')[0].reset();
                                 $('#quizQuestionPaperModal').modal('hide');
                                 table.draw();
@@ -151,23 +148,33 @@
 
                 });
 
-
-                 $('body').on('click', '.questionPaperEdit-btn', function() {
+                $('body').on('click', '.questionPaperEdit-btn', function() {
                     $('.message').empty();
-                    $('#quizQuestionPaperModal').modal('show');
+
                     var id = $(this).data('id');
-                    // $.get("{{ route('dashboard.quizQuestionEdit') }}/" + id, function(data) {
-                    //     $('.create_question_paper').html("Edit Question Paper");        
-                    //     $('#id').val(data.id);
-                    //     $('#title').val(data.title);
-                    //     $('#subtitle').val(data.subtitle);
-                    //     $('#duration').val(data.duration);
-                    //     $('#full_marks').val(data.full_marks);
-                    //     $('#quizSelect').val(data.quizSelect);
-                    // });
+                    $.get("{{ route('dashboard.quizQuestionEdit')  }}/" + id, function(data) {
+                        $('.modal-title').html("Edit Quiz Question Paper");
+                        $('.create_question_paper').html("Edit Question Paper");
+                        $('#quizQuestionPaperModal').modal('show');
+
+                        $('#QuestionPaperForm [name="id"]').val(data.id);
+                        $('#QuestionPaperForm [name="title"]').val(data.title);
+                        $('#QuestionPaperForm [name="subtitle"]').val(data.subtitle);
+                        $('#QuestionPaperForm [name="duration"]').val(data.duration);
+                        $('#QuestionPaperForm [name="full_marks"]').val(data.full_marks);
+                       // $('#id').val(data.id);
+                       // $('#title').val(data.title);
+                       // $('#subtitle').val(data.subtitle);
+                       // $('#duration').val(data.duration);
+                       // $('#full_marks').val(data.full_marks);
+                        // $('#quizSelect').val(data.quiz_id);
+
+                        var jsonData = JSON.parse(data.quiz_id);
+                        $('#quizSelect').val(jsonData);
+                    });
                 });
 
-
+                // $('#formId [name="ElementNameHere"]')
 
                 $(document).on('click', '.questionPaperDelete-btn', function(e) {
                     e.preventDefault();
@@ -190,13 +197,13 @@
                                     id: id
                                 },
                                 success: function(response) {
-                                    if (response.success) {
+                                    if (response.message) {
 
                                         Swal.fire({
                                             position: 'top-end',
                                             icon: 'success',
                                             toast: true,
-                                            title: response.success,
+                                            title: response.message,
                                             showConfirmButton: false,
                                             timer: 1500,
                                         });
