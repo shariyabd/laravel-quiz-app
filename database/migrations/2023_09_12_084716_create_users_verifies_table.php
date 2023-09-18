@@ -17,9 +17,9 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Schema::table('users', function (Blueprint $table) {
-        //     $table->boolean('email_verified_at')->default(0);
-        // });
+        Schema::table('users', function (Blueprint $table) {
+            $table->boolean('is_email_verified')->default(0);
+        });
     }
 
     /**

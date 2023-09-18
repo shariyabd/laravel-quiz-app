@@ -44,9 +44,12 @@ Route::post('/post-login', [UserAuthController::class, 'postLogin'])->name('logi
 Route::get('/register', [UserAuthController::class, 'registration'])->name('register');
 Route::post('/post-registration', [UserAuthController::class, 'postRegistration'])->name('register.post');
 
+Route::get('/dashboard', [UserAuthController::class, 'dashboard'])->middleware(['auth', 'is_verify_email'])->name('frontend.dashboard'); 
+Route::get('account/verify/{token}', [UserAuthController::class, 'verifyAccount'])->name('user.verify');
+
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', [UserAuthController::class, 'dashboard'])->name('frontend.dashboard');
+    // Route::get('/dashboard', [UserAuthController::class, 'dashboard'])->name('frontend.dashboard');
     Route::post('/logout', [UserAuthController::class, 'logout'])->name('logout');
     Route::get('/show-user-data', [UserAuthController::class, 'showUser'])->name('showUser');
     Route::post('/update-profile', [UserAuthController::class, 'updateProfile'])->name('updateProfile');
@@ -59,6 +62,7 @@ Route::middleware('auth')->group(function () {
    Route::post('user-password/update', [UserPasswordUpdateController::class, 'userPasswordUpdate'])->name('user.password.update');
 
 });
+
 
 
 Route::get('forgot-password', [UserResetPasswordController::class, 'resetForm'])->name('user.password.get');
