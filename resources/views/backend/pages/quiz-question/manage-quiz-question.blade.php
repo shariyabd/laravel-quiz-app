@@ -1,6 +1,6 @@
 @extends('backend.layouts.master');
 
-@include('backend.pages.quiz-question.addEditForm');
+@include('backend.pages.quiz-question.addEditForm')
 @section('main-content')
     <!-- content @s
         -->
@@ -12,7 +12,8 @@
                             <div class="card-head">
                                 <h3>Quiz Question</h3>
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#quizQuestionPaperModal" id="addQuestionPaper">Add Quiz Question</button>
+                                    data-bs-target="#quizQuestionPaperModal" id="addQuestionPaper">Add New  <i
+                                    class="fa-solid fa-plus pl-1"></i></button>
                             </div>
                             <div class="col-md-12">
                                 <div class="card-body">

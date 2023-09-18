@@ -1,4 +1,4 @@
-{{-- @extends('frontend.layouts.master')
+@extends('frontend.layouts.master')
 @section('main-content')
 <div class="container">
     <div class="row justify-content-center mt-5">
@@ -30,7 +30,7 @@
                             <div class=" text-danger">{{ $message }}</div>
                         @enderror
 
-                        <button name="register" type="submit" class="btn btn-success mt-2">Reset</button>
+                        <button name="" type="submit" class="btn btn-success mt-2">Reset</button>
                         
                     </form>
                 </div>
@@ -38,4 +38,4 @@
         </div>
     </div>
 </div>
-@endsection --}}
+@endsection

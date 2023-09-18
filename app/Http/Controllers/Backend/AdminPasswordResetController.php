@@ -96,6 +96,6 @@ class AdminPasswordResetController extends Controller
         AdminPasswordReset::where('email', $request->email)->delete();
 
         // Session::flash('cls', 'success');
-        return redirect(route('admin.login.show'))->with('message', 'Your password has been changed!');
+        return redirect(route('admin.dashboard'))->with('success', 'Your password has been changed!');
     }
 }

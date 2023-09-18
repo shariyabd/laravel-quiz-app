@@ -3,7 +3,7 @@
         <div class="card-inner">
             <div class="user-card">
                 <div class="user mr-2">
-                    <img src="{{ asset('image/' . Auth::guard('admin')->user()->image) }}" class="rounded-circle" style="width: 100px; height:100px" alt="User Image"">
+                    <img src="{{ asset('backend/image/' . Auth::guard('admin')->user()->image) }}" class="rounded-circle" style="width: 100px; height:100px" alt="User Image">
                 </div>
                 <div class="user-info">
                     <span class="lead-text">{{Auth::guard('admin')->user()->name}}</span>
@@ -25,9 +25,8 @@
             <ul class="link-list-menu">
                 <li><a class="active" href="{{route('dashboard.adminProfile')}}"><em class="icon ni ni-user-fill-c"></em><span>Personal Infomation</span></a></li>
                 <li><a href="{{route('dashboard.adminProfile.updateForm')}}"><em class="icon ni ni-grid-add-fill-c"></em><span>Update Profile</span></a></li>
-                <li><a href="html/user-profile-notification.html"><em class="icon ni ni-bell-fill"></em><span>Notifications</span></a></li>
-                <li><a href="html/user-profile-activity.html"><em class="icon ni ni-activity-round-fill"></em><span>Account Activity</span></a></li>
                 <li><a href="{{route('dashboard.adminPassword.updateForm')}}"><em class="icon ni ni-lock-alt-fill"></em><span>Password Settings</span></a></li>
+                <li><a href="html/user-profile-notification.html"><em class="icon ni ni-bell-fill"></em><span>Notifications</span></a></li>
             </ul>
         </div><!-- .card-inner -->
     </div><!-- .card-inner-group -->

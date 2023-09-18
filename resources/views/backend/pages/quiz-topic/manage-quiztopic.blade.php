@@ -1,5 +1,5 @@
 @extends('backend.layouts.master');
-@include('backend.pages.quiz-topic.addEditForm');
+@include('backend.pages.quiz-topic.addEditForm')
 @section('main-content')
     <!-- content @s
         -->

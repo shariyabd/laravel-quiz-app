@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('duration');
             $table->string('full_marks');
             $table->json('quiz_id')->nullable();
-            $table->string('deleted_at')->nullable(); 
+            $table->softDeletes();
             $table->timestamps();
         });
     }

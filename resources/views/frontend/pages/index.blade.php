@@ -57,7 +57,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <img src="{{ asset('frontend/img/banner.jpg') }}" class="img img-fluid" alt="">
+                        <img src="{{ asset('frontend/image/banner.jpg') }}" class="img img-fluid" alt="">
                     </div>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <img src="{{ asset('frontend/img/second-banner.jpg') }}" class="img img-fluid" alt="">
+                        <img src="{{ asset('frontend/image/second-banner.jpg') }}" class="img img-fluid" alt="">
                     </div>
                     <div class="col-md-6">
                         <p>Make your quiz to generate leads. An interactive quiz is a great way to generate leads on your

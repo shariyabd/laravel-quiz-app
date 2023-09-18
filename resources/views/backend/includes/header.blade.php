@@ -13,7 +13,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <div class="user-toggle">
                     <div class="user-avatar sm">
-                        <img src="{{ asset('image/' . Auth::guard('admin')->user()->image) }}" alt="User Image"">
+                        <img src="{{ asset('backend/image/' . Auth::guard('admin')->user()->image) }}" alt="User Image"">
                     </div>
                     <div class="user-info d-none d-md-block">
                         <div class="user-status">Admin</div>
@@ -25,7 +25,7 @@
                 <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
                     <div class="user-card">
                         <div class="user-avatar ">
-                            <img src="{{ asset('image/' . Auth::guard('admin')->user()->image) }}" alt="User Image"">
+                            <img src="{{ asset('backend/image/' . Auth::guard('admin')->user()->image) }}" alt="User Image"">
                            
                         </div>
                         <div class="user-info">
@@ -38,7 +38,7 @@
                     <ul class="link-list">
                         <li><a href="{{ route('dashboard.adminProfile') }}"><em
                                     class="icon ni ni-user-alt"></em><span>View Profile</span></a></li>
-                        <li><a href="html/user-profile-setting.html"><em
+                        <li><a href="{{route('dashboard.adminProfile')}}"><em
                                     class="icon ni ni-setting-alt"></em><span>Account Setting</span></a></li>
                         <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Dark
                                     Mode</span></a></li>

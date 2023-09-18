@@ -2,14 +2,14 @@
 @section('main-content')
     <div class="nk-content ">
         <div class="nk-block nk-block-middle nk-auth-body wide-xs">
-            <div class="brand-logo pb-4 text-center">
+            {{-- <div class="brand-logo pb-4 text-center">
                 <a href="{{ route('admin.register') }}" class="logo-link">
                     <img class="logo-light logo-img" src="{{ asset('backend/images/logo.png') }}"
                         srcset="{{ asset('backend/images/logo2x.png 2x') }}" alt="logo">
                     <img class="logo-dark logo-img" src="{{ asset('backend/images/logo-dark.png') }}"
                         srcset="{{ asset('backend/images/logo-dark2x.png 2x') }}" alt="logo-dark">
                 </a>
-            </div>
+            </div> --}}
             <div class="card card-bordered">
                 <div class="card-inner card-inner-lg">
                     <div class="nk-block-head">

@@ -8,8 +8,9 @@
         </div>
         <div class="nk-sidebar-brand">
             <a href="{{ route('admin.dashboard') }}" class="logo-link nk-sidebar-logo">
-                <img class="logo-light logo-img" src="{{ asset('backend/images/logo.png') }}"
-                    srcset="{{ asset('backend/images/logo2x.png 2x') }}" alt="logo">
+                <h2 class="text-light">Quiz</h2>
+                {{-- <img class="logo-light" style="width: 100px; height:100px;" src="{{ asset('backend/image/logo.png') }}"
+                    srcset="{{ asset('backend/images/logo2x.png 2x') }}" alt="logo"> --}}
                 <img class="logo-dark logo-img" src="{{ asset('backend/images/logo-dark.png') }}"
                     srcset="{{ asset('backend/images/logo-dark2x.png 2x') }}" alt="logo-dark">
             </a>
@@ -24,22 +25,22 @@
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
                         <a href="{{ route('admin.dashboard') }}" class="nk-menu-link">
-                            <span class="nk-menu-icon"><em class="icon ni ni-dashlite"></em></span>
-                            <span class="nk-menu-text">Default Dashboard</span>
+                            <span class="nk-menu-icon"><i class="fa-solid fa-house"></i></i></span>
+                            <span class="nk-menu-text"> Dashboard</span>
                         </a>
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
                         <a href="" class="nk-menu-link">
-                            <span class="nk-menu-icon"><em class="icon ni ni-coins"></em></span>
-                            <span class="nk-menu-text">Invest Dashboard</span>
+                            <span class="nk-menu-icon"><i class="fa-solid fa-lightbulb"></i></span>
+                            <span class="nk-menu-text"> Dashboard</span>
                         </a>
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-heading">
-                        <h6 class="overline-title text-primary-alt">Pre-Built Pages</h6>
+                        <h6 class="overline-title text-primary-alt">Manage Quizes</h6>
                     </li><!-- .nk-menu-heading -->
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
-                            <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
+                            <span class="nk-menu-icon"><i class="fa-solid fa-graduation-cap"></i></em></span>
                             <span class="nk-menu-text">Quiz Topic</span>
                         </a>
                         <ul class="nk-menu-sub">
@@ -50,7 +51,7 @@
                     </li>
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
-                            <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
+                            <span class="nk-menu-icon"><i class="fa-solid fa-graduation-cap"></i></em></span>
                             <span class="nk-menu-text">Quiz</span>
                         </a>
                         <ul class="nk-menu-sub">
@@ -62,7 +63,7 @@
                    
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
-                            <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
+                            <span class="nk-menu-icon"><i class="fa-solid fa-graduation-cap"></i></em></span>
                             <span class="nk-menu-text">Quiz Question Paper </span>
                         </a>
                         <ul class="nk-menu-sub">
@@ -73,18 +74,15 @@
                     </li>
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
-                            <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
+                            <span class="nk-menu-icon"><i class="fa-solid fa-graduation-cap"></i></em></span>
                             <span class="nk-menu-text">User Answer Paper </span>
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
                                 <a href="" class="nk-menu-link"><span class="nk-menu-text">Mange User Answer</span></a>
                             </li>
-                            {{-- <li class="nk-menu-item">
-                                <a href="" class="nk-menu-link"><span class="nk-menu-text">Manage Quiz Qustion</span></a>
-                            </li> --}}
                         </ul><!-- .nk-menu-sub -->
-                    </li><<!-- .nk-menu-item -->
+                    </li><!-- .nk-menu-item -->
                     <!-- .nk-menu-item -->
                 </ul><!-- .nk-menu -->
             </div><!-- .nk-sidebar-menu -->

@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Quiz;
+use App\Models\QuizQuestionPaper;
+use App\Models\QuizTopic;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\CssSelector\Node\FunctionNode;
@@ -10,8 +14,13 @@ use Symfony\Component\CssSelector\Node\FunctionNode;
 class AdminController extends Controller
 {
     public function dashboard(){
-        return view('backend.pages.index');
+        $totalQuiz = Quiz::count();
+        $totalQuizTopic = QuizTopic::count();
+        $totalQuizQuestionPaper = QuizQuestionPaper::count();
+        $totalUsers = User::count();
+        return view('backend.pages.index', compact('totalQuiz', 'totalQuizTopic', 'totalQuizQuestionPaper','totalUsers'));
     }
+    
 
     public function adminProfile(){
         return view('backend.pages.admin-profile.admin-profile');

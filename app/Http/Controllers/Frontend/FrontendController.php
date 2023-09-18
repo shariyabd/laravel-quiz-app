@@ -20,7 +20,7 @@ class FrontendController extends Controller
      public function dashboard()
 {
   
-    return view('frontend.pages.dashboard');
+    return view('frontend.dashboard.pages.dashboard');
 }
 
 }

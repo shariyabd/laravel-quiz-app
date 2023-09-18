@@ -11,9 +11,9 @@
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Total Quiz Topic
                             </div>
-                            <div class="h5">4546</div>
+                            <div class="h5">{{$totalQuizTopic}}</div>
                             <div class="col-auto">
-                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                <i class="fa-solid fa-user-graduate fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -28,9 +28,9 @@
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                Total Quiz
                             </div>
-                            <div class="h5">4546</div>
+                            <div class="h5">{{$totalQuiz}}</div>
                             <div class="col-auto">
-                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                <i class="fa-solid fa-user-graduate fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -45,9 +45,9 @@
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Total Users
                             </div>
-                            <div class="h5">4546</div>
+                            <div class="h5">{{$totalUsers}}</div>
                             <div class="col-auto">
-                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                <i class="fa-solid fa-user fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -60,11 +60,12 @@
                     <div class="row align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Total Question
+                                Total Question Paper
                             </div>
-                            <div class="h5">4546</div>
+                            <div class="h5">{{$totalQuizQuestionPaper}}</div>
                             <div class="col-auto">
-                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                <i class="fa-solid fa-file-circle-question fa-2x text-gray-300"></i>
+                               
                             </div>
                         </div>
                     </div>

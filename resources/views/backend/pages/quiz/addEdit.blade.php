@@ -8,7 +8,7 @@
             </div>
             <div class="message px-3 pt-2"></div>
             <div class="modal-body ">
-                <form id="QuizForm" class="row">
+                <form action="{{route('dashboard.quizStore')}}" method="POST" id="QuizForm" class="row" enctype="multipart/form-data">
                     @csrf
 
                     <input type="hidden" name="id" id="id">
@@ -56,7 +56,10 @@
                             </select>
                         </div>
                     </div>
-
+                    <div class="col-md-12 mb-2">
+                        <label for="image" class="pl-2">Image :</label>
+                        <input type="file" name="image" id="image" class="form-control ml-2">
+                    </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

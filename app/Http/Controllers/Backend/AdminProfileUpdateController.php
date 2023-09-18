@@ -23,21 +23,21 @@ class AdminProfileUpdateController extends Controller
         
         ]);
 
-        // $imageName = "";
-        //     if($image = $request->file('image')){
-        //         $imageName = uniqid() . '.' . $image->getClientOriginalExtension();
-        //         $image->move('image/',$imageName);
-        //     }
-
+      
            
         $imageName = "";
-        $oldImage = "image/".$admin->image;
+        $oldImage = "backend/image/".$admin->image;
         if($image = $request->file('image')){
             if(file_exists($oldImage)){
                 File::delete($oldImage);
             };
             $imageName = uniqid() . '.' . $image->getClientOriginalExtension();
-            $image->move('image/',$imageName);
+            $image->move('backend/image/',$imageName);
+
+            // $oldImagePath = public_path('backend/image/' . $admin->image);
+            // if (file_exists($oldImagePath) && is_file($oldImagePath)) {
+            //     unlink($oldImagePath);
+            // }
         
         }else{
             $imageName = $admin->image;

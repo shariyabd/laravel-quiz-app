@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('option_3');
             $table->string('option_4');
             $table->string('correct_answer');
-            $table->integer('deleted_at')->nullable();
+            $table->string('image');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

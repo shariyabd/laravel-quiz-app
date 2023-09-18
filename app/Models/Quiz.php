@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Quiz extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = 
     [
@@ -17,6 +19,7 @@ class Quiz extends Model
         'option_3',
         'option_4',
         'correct_answer',
+        'image',
         'quiz_topic_id'
     ];
 

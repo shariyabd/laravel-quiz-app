@@ -1,4 +1,4 @@
-@extends('backend.layouts.master');
+@extends('backend.layouts.master')
 
 @section('main-content')
 <div class="nk-content ">
@@ -14,7 +14,7 @@
                                         <div class="nk-block-head-content">
                                             <h4 class="nk-block-title">Personal Information</h4>
                                             <div class="nk-block-des">
-                                                <p>Basic info, like your name and address, that you use on Nio Platform.</p>
+                                                <p>Basic info, like your name and email, that you use on this Platform.</p>
                                             </div>
                                         </div>
                                         <div class="nk-block-head-content align-self-start d-lg-none">
@@ -42,18 +42,7 @@
                                             <div class="data-col data-col-end"><span class="data-more disable"><em class="icon ni ni-lock-alt"></em></span></div>
                                         </div><!-- data-item -->
                                     </div><!-- data-list -->
-                                    <div class="nk-data data-list">
-                                        <div class="data-head">
-                                            <h6 class="overline-title">Preferences</h6>
-                                        </div>
-                                        <div class="data-item">
-                                            <div class="data-col">
-                                                <span class="data-label">Language</span>
-                                                <span class="data-value">English (United State)</span>
-                                            </div>
-                                            <div class="data-col data-col-end"><a href="#" data-toggle="modal" data-target="#profile-language" class="link link-primary">Change Language</a></div>
-                                        </div><!-- data-item -->
-                                    </div><!-- data-list -->
+                                    <!-- data-list -->
                                 </div><!-- .nk-block -->
                             </div>
                           @include('backend.pages.admin-profile.includes.sidebar')
