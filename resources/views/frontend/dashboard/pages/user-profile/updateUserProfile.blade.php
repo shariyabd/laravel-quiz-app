@@ -36,6 +36,7 @@
                                             @endif
                                             <form action="{{ route('userProfileUpdate') }}" method="POST"
                                                 enctype="multipart/form-data">
+                                                
                                                 @csrf
                                                 <input type="text" value="{{ Auth::guard('user')->user()->name }}"
                                                     name="name" id="name" class="form-control mb-3"

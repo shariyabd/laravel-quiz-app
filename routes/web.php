@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\QuizTopicController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Backend\QuizQuestionController;
 use App\Http\Controllers\Backend\AdminProfileUpdateController;
+use App\Http\Controllers\Backend\UsersController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Frontend\UserPasswordUpdateController;
 use App\Http\Controllers\Frontend\UserProfileUpdateController;
@@ -101,6 +102,12 @@ Route::middleware('admin')->group(function () {
         Route::post('/dashboard/quiz-question-store', [QuizQuestionController::class, 'QuizQuestionStore'])->name('dashboard.quizQuestionStore');
         Route::get('/dashboard/quiz-question-edit/{id?}', [QuizQuestionController::class, 'QuizQuestionEdit'])->name('dashboard.quizQuestionEdit');
         Route::post('/dashboard/quiz-question-delete', [QuizQuestionController::class, 'QuizQuestionDelete'])->name('dashboard.quizQuestionDelete');
+
+        Route::get('/dashboard/users/', [UsersController::class, 'showUser'])->name('dashboard.user.show');
+        Route::post('/dashboard/users/{id}', [UsersController::class, 'sendEmail'])->name('dashboard.user.sendEmail');
+
+        // Route::post('/dashboard/users', [UsersController::class, 'sendEmail'])->name('dashboard.user.sendEmail');
+        // Route::post('/dashboard/users/send-email/{id}', [UsersController::class, 'sendEmail'])->name('dashboard.user.sendEmail');
     });
 });
 
@@ -129,7 +136,3 @@ Route::prefix('admin')->group(function () {
 
 
 
-// Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
-// Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
-// Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
-// Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');

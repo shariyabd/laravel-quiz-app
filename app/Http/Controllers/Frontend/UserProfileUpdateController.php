@@ -25,6 +25,7 @@ class UserProfileUpdateController extends Controller
 
        
 
+        // dd($request->file('image'));
         $imageName = "";
         $oldImage = "frontend/image/".$user->image;
 

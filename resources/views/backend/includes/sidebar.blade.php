@@ -82,6 +82,17 @@
                                 <a href="" class="nk-menu-link"><span class="nk-menu-text">Mange User Answer</span></a>
                             </li>
                         </ul><!-- .nk-menu-sub -->
+                    </li>
+                    <li class="nk-menu-item has-sub">
+                        <a href="#" class="nk-menu-link nk-menu-toggle">
+                            <span class="nk-menu-icon"><i class="fa-solid fa-user"></i></em></span>
+                            <span class="nk-menu-text">User's</span>
+                        </a>
+                        <ul class="nk-menu-sub">
+                            <li class="nk-menu-item">
+                                <a href="{{route('dashboard.user.show')}}" class="nk-menu-link"><span class="nk-menu-text">Mange User's</span></a>
+                            </li>
+                        </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->
                     <!-- .nk-menu-item -->
                 </ul><!-- .nk-menu -->

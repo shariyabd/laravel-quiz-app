@@ -74,7 +74,7 @@ class UserAuthController extends Controller
             Session::flash('cls', 'success');
             return redirect('/dashboard')->with('success', 'Great! You have successfully logged in.');
         } else {
-            return redirect()->back()->withErrors(['email' => 'These credentials do not match our records.']);
+            return redirect()->back()->withErrors(['email' => 'Email or Password does not match our records.']);
         }
     }
 
