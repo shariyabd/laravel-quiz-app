@@ -7,6 +7,7 @@ use App\Models\UsersVerify;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\QuizTopic;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -92,7 +93,7 @@ class UserAuthController extends Controller
     {
 
 
-        $userId = Auth::user()->id;
+        $userId = Auth::guard('user')->user()->id;
         $user = User::findorFail($userId);
 
         $request->validate([
@@ -136,8 +137,9 @@ class UserAuthController extends Controller
 
     public function dashboard()
     {
-        if(Auth::check()){
-            return view('frontend.dashboard.pages.dashboard');
+        $quizTopic = QuizTopic::all();
+        if(Auth::guard('user')->check()){
+            return view('frontend.dashboard.pages.dashboard', compact('quizTopic'));
         }
     
         return redirect("login")->withSuccess('Opps! You do not have access');

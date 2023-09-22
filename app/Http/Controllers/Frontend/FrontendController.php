@@ -18,10 +18,7 @@ class FrontendController extends Controller
         return view('frontend.pages.quiz.all-quiz');
      }
 
-     public function dashboard()
-{
-    
-    
-}
+
+
 
 }

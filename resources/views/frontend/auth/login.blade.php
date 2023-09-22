@@ -7,9 +7,14 @@
                     <div class="card-header">
                         <h2>Login</h2>
                     </div>
-                    @if(session('message'))
-    <div class="alert alert-danger">{{ session('message') }}</div>
-@endif
+                    @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                    @if (session('message'))
+                        <div class="alert alert-danger">{{ session('message') }}</div>
+                    @endif
                     <div class="card-body">
                         <form action="{{ route('login.post') }}" method="POST">
                             @csrf
@@ -20,7 +25,7 @@
                             @enderror
                             <div class="d-flex justify-content-between mt-1">
                                 <label for="password">Password : </label>
-                                <a href="{{route('user.password.get')}}" class="text-light">Forgot Password?</a>
+                                <a href="{{ route('user.password.get') }}" class="text-light">Forgot Password?</a>
                             </div>
                             <input type="password" name="password" id="password" class="form-control">
                             @error('password')

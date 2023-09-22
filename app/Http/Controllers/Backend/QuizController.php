@@ -94,7 +94,7 @@ class QuizController extends Controller
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('uploads'), $imageName);
+            $image->move('image/', $imageName);
     
          
         }

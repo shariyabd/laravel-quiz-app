@@ -43,11 +43,15 @@
                             <span class="nk-menu-icon"><i class="fa-solid fa-graduation-cap"></i></em></span>
                             <span class="nk-menu-text">Start Quiz </span>
                         </a>
+                        {{-- @foreach ($quizTopic as $topic )
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="" class="nk-menu-link"><span class="nk-menu-text">Manage Qustion Papers</span></a>
+                                <a href="#" class="nk-menu-link"><span class="nk-menu-text">{{$topic->name}}</span></a>
                             </li>
-                        </ul><!-- .nk-menu-sub -->
+                        </ul>
+                        @endforeach --}}
+                       
+                <!-- .nk-menu-sub -->
                     </li>
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">

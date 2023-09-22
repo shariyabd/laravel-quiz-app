@@ -7,16 +7,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="message px-3 pt-2"></div>
-            
-                @php
-                    $id = Auth::user()->id;
-                @endphp
-          
-            
 
             {{-- Now you can use $id safely --}}
 
-
+            @php
+                $id = Auth::guard('user')->user()->id;
+            @endphp
             <div class="modal-body">
                 <form id="userForm" name="userForm" action="{{ route('dashboard.user.sendEmail', ['id' => $id]) }}"
                     method="POST">

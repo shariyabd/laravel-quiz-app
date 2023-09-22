@@ -18,6 +18,7 @@ use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Frontend\UserPasswordUpdateController;
 use App\Http\Controllers\Frontend\UserProfileUpdateController;
 use App\Http\Controllers\Frontend\UserResetPasswordController;
+use App\Http\Middleware\CheckIsActive;
 use App\Models\Quiz;
 use App\Models\User;
 use App\Models\Admin;
@@ -45,7 +46,9 @@ Route::post('/post-login', [UserAuthController::class, 'postLogin'])->name('logi
 Route::get('/register', [UserAuthController::class, 'registration'])->name('register');
 Route::post('/post-registration', [UserAuthController::class, 'postRegistration'])->name('register.post');
 
-Route::get('/dashboard', [UserAuthController::class, 'dashboard'])->middleware(['auth', 'is_verify_email'])->name('frontend.dashboard'); 
+Route::get('/dashboard', [UserAuthController::class, 'dashboard'])
+    ->middleware(['auth', 'is_verify_email', CheckIsActive::class])
+    ->name('frontend.dashboard');
 Route::get('account/verify/{token}', [UserAuthController::class, 'verifyAccount'])->name('user.verify');
 
 
@@ -59,9 +62,8 @@ Route::middleware('auth')->group(function () {
     Route::get('user-profile/update', [UserController::class, 'userProfileUpdateForm'])->name('userProfileUpdateForm');
     Route::post('user-profile/update', [UserProfileUpdateController::class, 'userProfileUpdate'])->name('userProfileUpdate');
 
-   Route::get('user-password', [UserController::class, 'userPasswordUpdateForm'])->name('user.password.updateForm');
-   Route::post('user-password/update', [UserPasswordUpdateController::class, 'userPasswordUpdate'])->name('user.password.update');
-
+    Route::get('user-password', [UserController::class, 'userPasswordUpdateForm'])->name('user.password.updateForm');
+    Route::post('user-password/update', [UserPasswordUpdateController::class, 'userPasswordUpdate'])->name('user.password.update');
 });
 
 
@@ -69,8 +71,8 @@ Route::middleware('auth')->group(function () {
 Route::get('forgot-password', [UserResetPasswordController::class, 'resetForm'])->name('user.password.get');
 Route::post('/forgot-password', [UserResetPasswordController::class, 'submitForm'])->name('user.password.post');
 
- Route::get('/reset-password/{token}', [UserResetPasswordController::class, 'showResetPasswordForm'])->name('user.password.reset');
- Route::post('/reset-password', [UserResetPasswordController::class, 'passwordUpdate'])->name('password.update');
+Route::get('/reset-password/{token}', [UserResetPasswordController::class, 'showResetPasswordForm'])->name('user.password.reset');
+Route::post('/reset-password', [UserResetPasswordController::class, 'passwordUpdate'])->name('password.update');
 
 
 
@@ -103,9 +105,18 @@ Route::middleware('admin')->group(function () {
         Route::get('/dashboard/quiz-question-edit/{id?}', [QuizQuestionController::class, 'QuizQuestionEdit'])->name('dashboard.quizQuestionEdit');
         Route::post('/dashboard/quiz-question-delete', [QuizQuestionController::class, 'QuizQuestionDelete'])->name('dashboard.quizQuestionDelete');
 
+
+        Route::post('/dashboard/users/create', [UsersController::class, 'userPost'])->name('dashboard.user.post');
+
         Route::get('/dashboard/users/', [UsersController::class, 'showUser'])->name('dashboard.user.show');
         Route::post('/dashboard/users/{id}', [UsersController::class, 'sendEmail'])->name('dashboard.user.sendEmail');
 
+        Route::put('users/{user}/activate', [UsersController::class, 'active'])->name('dashboard.user.activate');
+        Route::put('users/{user}/deactivate', [UsersController::class, 'deactive'])->name('dashboard.user.deactivate');
+
+
+        // Route::put('users/{user}/activate', [AdminUserController::class, 'activate'])->name('admin.users.activate');
+        // Route::put('users/{user}/deactivate', [AdminUserController::class, 'deactivate'])->name('admin.users.deactivate');
         // Route::post('/dashboard/users', [UsersController::class, 'sendEmail'])->name('dashboard.user.sendEmail');
         // Route::post('/dashboard/users/send-email/{id}', [UsersController::class, 'sendEmail'])->name('dashboard.user.sendEmail');
     });
@@ -127,12 +138,9 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/dashboard/password/update', [AdminController::class, 'adminPasswordUpdateForm'])->name('dashboard.adminPassword.updateForm');
     Route::post('/dashboard/password/update', [AdminPasswordUpdateController::class, 'adminPasswordUpdate'])->name('dashboard.adminPassword.update');
-    
+
     Route::get('/forgot-password', [AdminPasswordResetController::class, 'showForgetPasswordForm'])->name('admin.password.get');
     Route::post('/forgot-password', [AdminPasswordResetController::class, 'submitForgetPasswordForm'])->name('admin.password.post');
     Route::get('/reset-password/{token}', [AdminPasswordResetController::class, 'showResetPasswordForm'])->name('admin.password.reset.get');
     Route::post('/reset-password', [AdminPasswordResetController::class, 'submitResetPasswordForm'])->name('admin.reset.password.update');
 });
-
-
-

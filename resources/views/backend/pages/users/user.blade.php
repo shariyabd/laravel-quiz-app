@@ -1,8 +1,8 @@
-@extends('backend.layouts.master');
-@include('backend.pages.users.user-modal');
+@extends('backend.layouts.master')
+@include('backend.pages.users.user-email-modal')
+@include('backend.pages.users.add-user-modal')
 @section('main-content')
-    <!-- content @s
-        -->
+ 
         <div class="container mt-5 ">
             <div class="container-fluid">
                 <div class="row">
@@ -11,12 +11,9 @@
                             <div class="card-head">
                                 <h3>User List</h3>
                                 <!-- Button trigger modal -->
-                                {{-- <a class="btn btn-primary" href="javascript:void(0)" id="createNewQuiz"> Add New <i
-                                        class="fa-solid fa-plus pl-1"></i></a> --}}
+                                <a class="btn btn-primary" href="javascript:void(0)" id="addNewUser"> Add New <i
+                                        class="fa-solid fa-plus pl-1"></i></a>
                             </div>
-                            {{-- @if (session('success'))
-                                <div class="alert alert-success">{{ session('success') }}</div>
-                            @endif --}}
                             <div class="col-md-12">
                                 <div class="card-inner">
                                     <table id="" class=" nowrap table data-table">
@@ -24,24 +21,10 @@
                                             <th>Id</th>
                                             <th>Name </th>
                                             <th>Email</th>
-                                            {{-- <th>Image</th> --}}
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </thead>
                                         <tbody>
-                                            {{-- @foreach ($users as $user)
-                                                <tr>
-                                                    <td>{{ $user->id }}</td>
-                                                    <td>{{ $user->name }}</td>
-                                                    <td>{{ $user->email }}</td>
-                                                    <td> <img id="imageShow"
-                                                            src="{{ asset('frontend/image/' . $user->image) }}"
-                                                            class="rounded-circle" width="50px" alt="User Image"></td>
-                                                    <td>
-                                                        <a href="javascript:void(0)" class="btn btn-primary" id="sendMail">Send
-                                                            Email</a>
-                                                    </td>
-                                                </tr>
-                                            @endforeach --}}
                                         </tbody>
                                     </table>
                                 </div>
@@ -51,22 +34,22 @@
                 </div>
             </div>
         </div>
-        @if (session('success'))
-            @push('js')
-                <script>
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: '{{ session('cls') }}',
-                        toast: true,
-                        title: '{{ session('success') }}',
-                        showConfirmButton: false,
-                        timer: 2000
-                    })
-                </script>
-            @endpush
-        @endif
+       
     @endsection
-
+    @if (session('success'))
+    @push('js')
+        <script>
+            Swal.fire({
+                position: 'top-end',
+                icon: '{{ session('cls') }}',
+                toast: true,
+                title: '{{ session('success') }}',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        </script>
+    @endpush
+@endif
     @push('js')
         <script>
             $.ajaxSetup({
@@ -94,6 +77,12 @@
                             data: 'email',
                             name: 'email'
                         },
+                        {
+                            data: 'status_toggle',
+                            name: 'status_toggle', 
+                            orderable: false,
+                            searchable: false
+                        },
                         // {
                         //     data: 'image',
                         //     name: 'image'
@@ -106,11 +95,53 @@
                         },
                     ]
 
-                })
+                });
 
 
+                $('#addNewUser').on('click', function(e) {
+                    e.preventDefault();
+                    $('#addUserModal').modal('show');
+                    $('.modal-title').html("Create New User");
+                });
 
-                $('body').on('click', '.send-email-btn', function() {
+
+                $('#addUser').on('click', function(e) {
+                    e.preventDefault();
+
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ route('dashboard.user.post') }}",
+                        data: $('#addUserForm').serialize(),
+                        success: function(response) {
+                            if (response.success) {
+                                $('#addUserForm')[0].reset();
+
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    toast: true,
+                                    title: response.success,
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                                // $('.data-table').load(location.href + ' .data-table');
+                                table.draw();
+                                $('#addUserModal').modal('hide');
+                            }
+                        },
+                        error: function(error) {
+                            var errors = error.responseJSON.errors;
+                            $.each(errors, function($key, $value) {
+                                $('.message').append('<span class="text-danger alert">' +
+                                    $value +
+                                    '</span>' + '<br>');
+                            })
+                        }
+                    });
+                });
+                $('body').on('click', '.send-email-btn', function(e) {
+
+                    e.preventDefault();
 
                     // $('#id').val('');
                     $('#userForm').trigger("reset");
@@ -118,17 +149,6 @@
                     $('#userModal').modal('show');
                 });
 
-                // $('#imageShow').click(function() {
-                //     Swal.fire({
-                //         title: 'Sweet!',
-                //         text: 'Modal with a custom image.',
-                //         imageUrl: 'https://unsplash.it/400/200',
-                //         imageWidth: 500,
-                //         imageHeight: 500,
-                //         imageAlt: 'Custom image',
-                //     })
-
-                // })
-            })
+            });
         </script>
     @endpush
