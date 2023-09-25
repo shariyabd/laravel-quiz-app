@@ -18,16 +18,35 @@
 - **Admin Password Reset:** Admins have the option to reset their passwords.
 - **Account Verification:** Email verification is implemented for admin accounts.
 - **Profile Update:** Admins can update their name, email, and password.
-
+#### User Management
+- Admins have comprehensive control over user management, including the ability to:
+  - Add new users to the system.
+  - Delete user accounts when necessary.
+  - Activate or deactivate user accounts as per requirements.
+  - Send emails to users for important notifications and updates.
 ## Quiz Creation and Management
 
 ### Features
 
-- **Quiz Topic Creation:** Admins can create quiz topics to categorize quizzes.
-- **Quiz Creation:** Admins can create quizzes within topics by adding questions, answer options, and specifying the correct answer.
-- **Edit Quizzes:** Admins have the ability to edit existing quizzes, including adding, modifying, or deleting questions and answers.
-- **Delete Quizzes:** Admins can delete quizzes and associated data.
-- **Single Choice Questions:** Quizzes support single-choice questions.
+- **Quiz Topic Creation:**
+  Admins can create, update, and delete quiz topics to categorize quizzes.
+
+- **Quiz Creation:**
+  Admins can create quizzes within topics by adding questions, answer options, and specifying the correct answer.
+
+- **Edit Quizzes:**
+  Admins have the ability to edit existing quizzes, including adding, modifying, or deleting questions and answers.
+
+- **Delete Quizzes:**
+  Admins can delete quizzes and associated data.
+
+- **Single Choice Questions:**
+  Quizzes support single-choice questions.
+
+- **Quiz Question Paper:**
+  Admins can generate quiz question papers, and have full control over their content, including the ability to add, update, and delete questions and answers.
+
+
 
 
 ### AJAX Integration
